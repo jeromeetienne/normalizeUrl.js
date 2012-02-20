@@ -26,3 +26,30 @@ Just use the following line. it is that simple
 ```
     var newUrl= normalizeUrl(url);
 ```
+
+Or to compare the urls
+
+```
+    if( normalizeUrl(url1) === normalizeUrl(url2) ){
+        console.log('both url are equal');
+    }
+```
+
+## some examples
+
+
+```
+    normalizeUrl('http://example.com/dummy/../index.html') === 'http://example.com/index.html'
+```
+
+```
+    normalizeUrl('http://example.com//./index.html') === 'http://example.com/index.html'
+```
+
+```
+    normalizeUrl('http://example.com//index.html') === 'http://example.com/index.html'
+```
+
+```
+    normalizeUrl('http://example.com:90/.././../bin//../slota/./../index.html?a=1&b=2#myAncher') === 'http://example.com:90/index.html?a=1&b=2#myAncher');
+```
