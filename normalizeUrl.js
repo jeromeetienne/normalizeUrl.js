@@ -51,10 +51,17 @@ function normalizeUrl(url){
 
 	// handle the parent path '..'
 	for(var i = 0; i < paths.length; i++ ){
-		if( paths[i] === '..' ){
-			if( i >= 2 )	paths.splice(i-1, 2);
-			else		paths.splice(i, 1);
-			i--;
+		//console.log(i+"th", paths[i], "paths", JSON.stringify(paths))
+		if( i >= 1 && paths[i+1] === '..' ){
+			//console.log("BEFORE", i+"th", paths[i], "paths", JSON.stringify(paths))
+			paths.splice(i, 2);
+			i -= 2;
+			//console.log("AFTER", i+"th", paths[i], "paths", JSON.stringify(paths))
+		}else if( paths[i] === '..' ){
+			//console.log("BEFORE", i+"th", paths[i], "paths", JSON.stringify(paths))
+			paths.splice(i, 1);
+			i -= 1;
+			//console.log("AFTER", i+"th", paths[i], "paths", JSON.stringify(paths))
 		}
 	}
 	//console.log("paths", JSON.stringify(paths))
